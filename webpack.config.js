@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const devMode = process.env.NODE_ENV !== 'production';
+/* const CleanWebpackPlugin = require('clean-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production'; */
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
@@ -15,9 +15,10 @@ module.exports = {
         contentBase: './dist'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        /* new CleanWebpackPlugin(['dist']), */
         new HtmlWebpackPlugin({
-            title: 'Output Management'
+            title: 'Anže Fajfar',
+            template: './src/index.html'
         }),
         extractCSS
     ],
@@ -26,19 +27,26 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     module: {
-        rules: [{
-            test: /\.(sa|sc|c)ss$/,
-            use: extractCSS.extract([
-                'css-loader',
-                'postcss-loader',
-                'sass-loader'
-            ])
-            /* [
-                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                "css-loader",
-                "sass-loader"
-            ] */
-        }]
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/preset-env']
+                }
+            },
+
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: extractCSS.extract([
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ])
+            }
+
+        ]
+
     }
 
 };
