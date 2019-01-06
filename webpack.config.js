@@ -1,12 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-/* const CleanWebpackPlugin = require('clean-webpack-plugin');
-const devMode = process.env.NODE_ENV !== 'production'; */
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractCSS = new ExtractTextPlugin('styles.min.css');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         app: './src/index.js'
     },
@@ -15,12 +14,17 @@ module.exports = {
         contentBase: './dist'
     },
     plugins: [
-        /* new CleanWebpackPlugin(['dist']), */
+        new CleanWebpackPlugin(['dist']), 
         new HtmlWebpackPlugin({
             title: 'Anže Fajfar',
             template: './src/index.html'
         }),
-        extractCSS
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].[hash].css',
+            chunkFilename: '[id].[hash].css',
+        })
     ],
     output: {
         filename: '[name].bundle.js',
@@ -38,11 +42,12 @@ module.exports = {
 
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: extractCSS.extract([
+                use: [
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'sass-loader'
-                ])
+                    'sass-loader',
+                ],
             },
 
             {

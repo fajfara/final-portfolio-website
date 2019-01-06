@@ -1,20 +1,138 @@
 .introduction
-    height: 100vh
+    height: 100%
+    overflow: auto
+    padding-bottom: 20rem
     .meet-me
         padding-top: 5rem
         .main-img
             height: 50rem
+
+            &:before
+                background-image: url('../img/pink-drawings/notes-guitar.png') 
+                background-size: 15rem 15rem;
+                position: absolute
+                left: 83%;
+                top: 20%;
+                display: inline-block;
+                width: 15rem
+                height: 15rem
+                content: ''
+
+            &:after
+                background-image: url('../img/pink-drawings/this-is-me.png') 
+                background-size: 30rem 15rem;
+                position: absolute
+                display: inline-block;
+                width: 30rem
+                height: 15rem
+                content: ''
+
             img 
                 height: 100%
+                
+
         .main-text
             height: 50rem
             h2 
                 font-family: $pacifico
                 color: $main-blue
                 font-size: 50px
+                &:after
+                    background-image: url('../img/pink-drawings/line-meet-me.png') 
+                    background-size: 15rem 7rem;
+                    position: absolute
+                    left: 20%
+                    display: inline-block;
+                    width: 15rem
+                    height: 7rem
+                    content: ''
+
             
             p
                 margin-top: 2rem
                 font-size: 20px
                 font-family: $rubik
+                color: $main-blue
                 line-height: 1.5rem
+
+.capabilities
+    margin-top: 30rem
+    position: relative
+    &--main-title
+        position: relative
+        h2
+            font-family: $pacifico
+            color: $main-blue
+            font-size: 50px 
+            margin-bottom: 2rem
+        &-line
+            position: absolute
+            width: 30rem
+            left: 50%
+            top: 2rem
+            transform: translateX(-50%) rotate(2deg)
+
+            img
+                width: 100%
+        
+
+    .main-content
+        position: relative
+        margin-top: 3rem
+        img
+            width: 30rem
+        &--description
+            position: relative
+            top: 50%
+            transform: translateY(-50%)
+            font-family: $rubik
+            color: $main-blue
+            line-height: 1.5rem
+            h2
+                font-family: $rubik
+                font-weight: 700
+                font-size: 50px 
+                margin-bottom: 2rem
+        .description-design
+            h2
+                position: relative;
+                z-index: 11;
+            &--main-title-line
+                position: absolute
+                width: 30rem
+                z-index: 10
+                left: 5rem;
+                top: -.5rem;
+                transform: translateX(-50%) rotate(2deg)
+                img
+                    width: 100%
+
+
+        .description-develop
+            h2
+                position: relative;
+                z-index: 11;
+            &--main-title-line
+                position: absolute
+                width: 30rem
+                z-index: 10
+                right: -23rem;
+                top: 0.2rem;
+                transform: translateX(-50%) rotate(2deg)
+                img
+                    width: 100%
+
+        .description-learn
+            h2
+                position: relative;
+                z-index: 11;
+            &--main-title-line
+                position: absolute
+                width: 30rem
+                z-index: 10
+                left: 5rem;
+                top: -.5rem;
+                transform: translateX(-50%) rotate(2deg)
+                img
+                    width: 100%
+
