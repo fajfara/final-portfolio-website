@@ -1,4 +1,5 @@
-const hamburger = document.querySelector(".hamburger");
+const hamburgerMain = document.getElementById("hamburgerMain");
+const hamburgerMobile = document.getElementById("hamburgerMobile");
 const overlayNavigation = document.getElementById("overlayNavigation");
 const logo = document.getElementById("logo");
 const logoAndMenu = document.getElementById("logo-and-menu");
@@ -7,21 +8,16 @@ const navLinks = document.querySelectorAll('.overlay-content-nav-links');
 
 navLinks.forEach(element => {
     element.addEventListener("click", () => {
-        hideNavigationOverlay();
+        hideNavigationOverlay(hamburgerMain);
     });
 });
 
-logo.addEventListener("click", () => {
-    location.reload();
-})
+
 
 // Let vars
 let navOpened = false;
 let DocumentScrollPosition;
 
-if (window.innerWidth < 665) {
-    hamburger.classList.add("hamburger-main-blue");
-}
 
 
 
@@ -41,13 +37,24 @@ document.body.onscroll = () => {
 }
 
 
-hamburger.addEventListener("click", function () {
-    hamburger.classList.toggle("is-active");
-    if (hamburger.getAttribute("opened") == "false") {
-        revealNavigationOverlay();
+hamburgerMain.addEventListener("click", function () {
+    hamburgerMain.classList.toggle("is-active");
+    if (hamburgerMain.getAttribute("opened") == "false") {
+        revealNavigationOverlay(hamburgerMain);
 
-    } else if (hamburger.getAttribute("opened") == "true") {
-        hideNavigationOverlay();
+    } else if (hamburgerMain.getAttribute("opened") == "true") {
+        hideNavigationOverlay(hamburgerMain);
+
+    }
+});
+
+hamburgerMobile.addEventListener("click", function () {
+    hamburgerMobile.classList.toggle("is-active");
+    if (hamburgerMobile.getAttribute("opened") == "false") {
+        revealNavigationOverlay(hamburgerMobile);
+
+    } else if (hamburgerMobile.getAttribute("opened") == "true") {
+        hideNavigationOverlay(hamburgerMobile);
 
     }
 });
@@ -56,9 +63,9 @@ hamburger.addEventListener("click", function () {
 // Functions outiside of events
 
 
-function hideNavigationOverlay() {
+function hideNavigationOverlay(hamburger) {
     overlayNavigation.style.width = "0%";
-
+    hamburger.classList.toggle("is-active");
     hamburger.setAttribute("opened", "false");
     DocumentScrollPosition = document.documentElement.scrollTop;
     if (DocumentScrollPosition > 370) {
@@ -77,7 +84,7 @@ function hideNavigationOverlay() {
     navBackground.classList.remove("nav-background-remove-shadow");
 }
 
-function revealNavigationOverlay() {
+function revealNavigationOverlay(hamburger) {
     overlayNavigation.style.width = "100%";
     hamburger.setAttribute("opened", "true");
     hamburger.classList.add("hamburger-main-blue");
@@ -90,13 +97,13 @@ function revealNavigationOverlay() {
 function unStickLogoAndMenuTop() {
     logoAndMenu.style.top = "13%";
     navBackground.style.height = "0%";
-    hamburger.classList.remove("hamburger-main-blue");
+    hamburgerMain.classList.remove("hamburger-main-blue");
     logo.classList.remove("color-main-blue");
 }
 
 function stickLogoAndMenuTop() {
     logoAndMenu.style.top = "3%";
     navBackground.style.height = "10%";
-    hamburger.classList.add("hamburger-main-blue");
+    hamburgerMain.classList.add("hamburger-main-blue");
     logo.classList.add("color-main-blue");
 }

@@ -31,13 +31,20 @@
     <div class="nav-background" id="nav-background">
 
     </div>
+    <div class="mobile-nav">
+        <button id="hamburgerMobile" class="hamburger hamburger--elastic hamburger-main-blue" type="button" opened="false">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </div>
     <div class="container logo-and-menu" id="logo-and-menu">
         <div class="row d-flex justify-content-between align-items-center">
             <div class="logo" id="logo">
                 <a href="#">FAJFARA.</a>
             </div>
             <div class="menu-icon">
-                <button class="hamburger hamburger--elastic" type="button" opened="false">
+                <button id="hamburgerMain" class="hamburger hamburger--elastic" type="button" opened="false">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
@@ -57,11 +64,13 @@
             <div class="row">
                 <div class="col-sm main-img">
                     <img src="<%= require('./img/me-guitar-jpg.jpg') %>" alt="Illustration of me playing guitar">
-
                 </div>
                 <div class="col-sm offset-sm-2 main-text text-center d-flex align-items-center">
                     <div class="text-center">
                         <h2>Meet me</h2>
+                        <div class="meet-me-line">
+                            <img src="<%= require('./img/pink-drawings/line-meet-me.png') %>" alt="Pink line under meet me title">
+                        </div>
                         <p class="text-left">I am a junior front-end developer with a goal of becoming fullstack. At
                             the
                             moment i am studying
