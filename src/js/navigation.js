@@ -19,16 +19,22 @@ logo.addEventListener("click", () => {
 let navOpened = false;
 let DocumentScrollPosition;
 
+if (window.innerWidth < 665) {
+    hamburger.classList.add("hamburger-main-blue");
+}
+
 
 
 
 document.body.onscroll = () => {
     let DocumentScrollPosition = document.documentElement.scrollTop;
     if (!navOpened) {
-        if (DocumentScrollPosition > 370) {
-            stickLogoAndMenuTop();
-        } else {
-            unStickLogoAndMenuTop();
+        if (window.innerWidth > 665) {
+            if (DocumentScrollPosition > 370) {
+                stickLogoAndMenuTop();
+            } else {
+                unStickLogoAndMenuTop();
+            }
         }
     }
 
@@ -58,9 +64,11 @@ function hideNavigationOverlay() {
     if (DocumentScrollPosition > 370) {
         stickLogoAndMenuTop();
     } else {
-        unStickLogoAndMenuTop();
-        hamburger.classList.remove("hamburger-main-blue");
-        logo.classList.remove("color-main-blue");
+        if (window.innerWidth > 665) {
+            hamburger.classList.remove("hamburger-main-blue");
+            logo.classList.remove("color-main-blue");
+            unStickLogoAndMenuTop();
+        }
     }
 
 
