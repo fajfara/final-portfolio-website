@@ -8,7 +8,7 @@ const navLinks = document.querySelectorAll('.overlay-content-nav-links');
 
 navLinks.forEach(element => {
     element.addEventListener("click", () => {
-        hideNavigationOverlay(hamburgerMain);
+        hideNavigationOverlay();
     });
 });
 
@@ -17,6 +17,22 @@ navLinks.forEach(element => {
 // Let vars
 let navOpened = false;
 let DocumentScrollPosition;
+let hamburgerButton;
+
+
+
+
+document.body.onload = () => {
+    setHamburgerVariableDepOnWidth();
+    addClickToHamburgerButton();
+}
+
+
+document.body.onresize = () => {
+    console.log("Resized", hamburgerButton);
+    setHamburgerVariableDepOnWidth();
+    addClickToHamburgerButton();
+}
 
 
 
@@ -37,42 +53,46 @@ document.body.onscroll = () => {
 }
 
 
-hamburgerMain.addEventListener("click", function () {
-    hamburgerMain.classList.toggle("is-active");
-    if (hamburgerMain.getAttribute("opened") == "false") {
-        revealNavigationOverlay(hamburgerMain);
 
-    } else if (hamburgerMain.getAttribute("opened") == "true") {
-        hideNavigationOverlay(hamburgerMain);
 
-    }
-});
 
-hamburgerMobile.addEventListener("click", function () {
-    hamburgerMobile.classList.toggle("is-active");
-    if (hamburgerMobile.getAttribute("opened") == "false") {
-        revealNavigationOverlay(hamburgerMobile);
 
-    } else if (hamburgerMobile.getAttribute("opened") == "true") {
-        hideNavigationOverlay(hamburgerMobile);
 
-    }
-});
 
 
 // Functions outiside of events
 
+function setHamburgerVariableDepOnWidth() {
+    if (window.innerWidth < 665) {
+        hamburgerButton = hamburgerMobile;
+    } else {
+        hamburgerButton = hamburgerMain;
+    }
+}
 
-function hideNavigationOverlay(hamburger) {
+function addClickToHamburgerButton() {
+    hamburgerButton.addEventListener("click", function () {
+        hamburgerButton.classList.toggle("is-active");
+        if (hamburgerButton.getAttribute("opened") == "false") {
+            revealNavigationOverlay();
+        }
+        else if (hamburgerButton.getAttribute("opened") == "true") {
+            hideNavigationOverlay();
+        }
+    });
+}
+
+
+function hideNavigationOverlay() {
     overlayNavigation.style.width = "0%";
-    hamburger.classList.toggle("is-active");
-    hamburger.setAttribute("opened", "false");
+    hamburgerButton.setAttribute("opened", "false");
     DocumentScrollPosition = document.documentElement.scrollTop;
+
     if (DocumentScrollPosition > 370) {
         stickLogoAndMenuTop();
     } else {
         if (window.innerWidth > 665) {
-            hamburger.classList.remove("hamburger-main-blue");
+            hamburgerButton.classList.remove("hamburger-main-blue");
             logo.classList.remove("color-main-blue");
             unStickLogoAndMenuTop();
         }
@@ -84,10 +104,10 @@ function hideNavigationOverlay(hamburger) {
     navBackground.classList.remove("nav-background-remove-shadow");
 }
 
-function revealNavigationOverlay(hamburger) {
+function revealNavigationOverlay() {
     overlayNavigation.style.width = "100%";
-    hamburger.setAttribute("opened", "true");
-    hamburger.classList.add("hamburger-main-blue");
+    hamburgerButton.setAttribute("opened", "true");
+    hamburgerButton.classList.add("hamburger-main-blue");
     logo.classList.add("color-main-blue");
     navOpened = true;
     navBackground.classList.add("nav-background-remove-shadow");
@@ -96,14 +116,14 @@ function revealNavigationOverlay(hamburger) {
 
 function unStickLogoAndMenuTop() {
     logoAndMenu.style.top = "13%";
-    navBackground.style.height = "0%";
-    hamburgerMain.classList.remove("hamburger-main-blue");
+    navBackground.style.height = "0rem";
+    hamburgerButton.classList.remove("hamburger-main-blue");
     logo.classList.remove("color-main-blue");
 }
 
 function stickLogoAndMenuTop() {
     logoAndMenu.style.top = "3%";
-    navBackground.style.height = "10%";
-    hamburgerMain.classList.add("hamburger-main-blue");
+    navBackground.style.height = "4rem";
+    hamburgerButton.classList.add("hamburger-main-blue");
     logo.classList.add("color-main-blue");
 }

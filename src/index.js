@@ -7,9 +7,3 @@ import 'reset-css';
 import './js/navigation.js';
 
 
-
-function refreshPage() {
-    location.reload();
-}
-
-
