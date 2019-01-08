@@ -29,7 +29,6 @@ document.body.onload = () => {
 
 
 document.body.onresize = () => {
-    console.log("Resized", hamburgerButton);
     setHamburgerVariableDepOnWidth();
     addClickToHamburgerButton();
 }
@@ -115,15 +114,15 @@ function revealNavigationOverlay() {
 }
 
 function unStickLogoAndMenuTop() {
-    logoAndMenu.style.top = "13%";
-    navBackground.style.height = "0rem";
+    logoAndMenu.style.top = "100px";
+    navBackground.style.height = "0px";
     hamburgerButton.classList.remove("hamburger-main-blue");
     logo.classList.remove("color-main-blue");
 }
 
 function stickLogoAndMenuTop() {
-    logoAndMenu.style.top = "3%";
-    navBackground.style.height = "4rem";
+    logoAndMenu.style.top = "30px";
+    navBackground.style.height = "96px";
     hamburgerButton.classList.add("hamburger-main-blue");
     logo.classList.add("color-main-blue");
 }
