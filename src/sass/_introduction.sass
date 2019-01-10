@@ -102,12 +102,13 @@
 
             img
                 width: 100%
-        
+       
 
     .main-content
         position: relative
         margin-top: 3rem
-        @media only screen and (max-width: 664px)
+        @media only screen and (max-width: 810px)
+            display: none
             .col
                 margin-bottom: 4rem
                 text-align: center !important
@@ -171,3 +172,21 @@
                 img
                     width: 100%
 
+        &--mobile
+            margin-top: 10rem
+            @media only screen and (min-width: 810px)
+                display: none
+            .col
+                overflow: hidden
+            img
+                width: 70%
+            .description
+                &-design
+                    &--mobile--main-title-line
+                        position: absolute
+                &-develop
+                    &--mobile--main-title-line
+                        position: absolute
+                &-learn
+                    &--mobile--main-title-line
+                        position: absolute

@@ -6,4 +6,6 @@ import 'reset-css';
 
 import './js/navigation.js';
 
+console.log("Yeah this website isn't finished :)");
+
 
