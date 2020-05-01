@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Anze Fajfar",
   "license": "ISC",
@@ -33,9 +35,11 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "popper": "^1.0.1",
     "popper.js": "^1.14.6",
-    "reset-css": "^4.0.1"
-  }
+    "reset-css": "^4.0.1",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
